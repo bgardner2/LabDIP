@@ -23,8 +23,7 @@ import javax.swing.JOptionPane;
  * @author your name goes here
  */
 public class Startup {
-    public static NumberFormat currencyFormatter = new DecimalFormat("#,###.00");
-    public static NumberFormat percentFormatter = new DecimalFormat("#,###.##%");
+    
     
     
     
@@ -40,6 +39,11 @@ public class Startup {
     
  
     public static void main(String[] args) {
+        DecimalFormat currencyFormatter = new DecimalFormat("#,###.00");
+        DecimalFormat percentFormatter = new DecimalFormat("#,###.##%");
+        
+        
+        
         
         
         TipManager tipManager = new TipManager();

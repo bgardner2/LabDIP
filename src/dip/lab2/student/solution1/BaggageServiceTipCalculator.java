@@ -10,7 +10,11 @@ package dip.lab2.student.solution1;
  *
  * @author your name goes here
  */
-public class BaggageServiceTipCalculator {
+public class BaggageServiceTipCalculator implements ITipCalculator{
+    
+    private final String BAG_COUNT_ERR  = "bag count must be greater than or equal to zero";
+    private final String BASE_TIP_ERR = "error: base tip must be greater than or equal to zero";
+    
     private static final double MIN_BILL = 0.00;
     private static final double MAX_BILL = 100.00;
     private static final String BILL_ENTRY_ERR =
@@ -32,6 +36,7 @@ public class BaggageServiceTipCalculator {
         baseTipPerBag = 1.00; // set default value
     }
 
+    @Override
     public double getTip() {
         double tip = 0.00; // always initialize local variables
 
@@ -50,11 +55,13 @@ public class BaggageServiceTipCalculator {
         return tip;
     }
 
+    @Override
     public final void setServiceRating(ServiceQuality q) {
         // No need to validate because enums provide type safety!
         serviceQuality = q;
     }
 
+    @Override
     public ServiceQuality getServiceQuality() {
         return serviceQuality;
     }
@@ -66,7 +73,7 @@ public class BaggageServiceTipCalculator {
     public final void setBagCount(int bagCount) {
         if(bagCount < 0) {
             throw new IllegalArgumentException(
-                    "bag count must be greater than or equal to zero");
+                    BAG_COUNT_ERR);
         }
         this.bagCount = bagCount;
     }
@@ -78,7 +85,7 @@ public class BaggageServiceTipCalculator {
     public void setBaseTipPerBag(double baseTipPerBag) {
         if(baseTipPerBag < 0) {
             throw new IllegalArgumentException(
-                    "error: base tip must be greater than or equal to zero");
+                    BASE_TIP_ERR);
         }
         this.baseTipPerBag = baseTipPerBag;
     }

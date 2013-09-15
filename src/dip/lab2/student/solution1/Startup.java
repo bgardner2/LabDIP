@@ -1,8 +1,11 @@
 package dip.lab2.student.solution1;
 
 // An useful import if you need it.
-import dip.lab2.*;
+
+
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
+
 // Another useful import if you need it.
 import javax.swing.JOptionPane;
 
@@ -20,6 +23,9 @@ import javax.swing.JOptionPane;
  * @author your name goes here
  */
 public class Startup {
+    public static NumberFormat currencyFormatter = new DecimalFormat("#,###.00");
+    public static NumberFormat percentFormatter = new DecimalFormat("#,###.##%");
+    
     
     
     /*TODO:
@@ -31,15 +37,36 @@ public class Startup {
      */
     
     
-    public static enum ServiceQuality {
-           GOOD, FAIR, POOR
-    };
+    
  
     public static void main(String[] args) {
         
-        BaggageServiceTipCalculator service =
+        
+        TipManager tipManager = new TipManager();
+        
+        ITipCalculator bagService =
                 new BaggageServiceTipCalculator(
-                BaggageServiceTipCalculator.ServiceQuality.FAIR,5);
+                ServiceQuality.FAIR,1000);
+        ITipCalculator foodService = 
+                new FoodServiceTipCalculator(ServiceQuality.GOOD, 1250);
+        
+        System.out.println("You had " 
+                + ((BaggageServiceTipCalculator)bagService).getBagCount()
+                + " bags and rated the service as "
+                + ((BaggageServiceTipCalculator)bagService).getServiceQuality()
+                + ". \nThe tip amount is $"
+                + currencyFormatter.format(tipManager.getTipForService(bagService)));
+        
+        System.out.println("");
+        
+        System.out.println("Your bill was $" 
+                + currencyFormatter.format(((FoodServiceTipCalculator)foodService).getBill())
+                + " and rated the service as "
+                + ((FoodServiceTipCalculator)foodService).getServiceQuality()
+                + ". \nThe tip amount is $"
+                + currencyFormatter.format(tipManager.getTipForService(foodService))
+                + ". \nThat is " 
+                + percentFormatter.format(tipManager.getTipForService(foodService)/((FoodServiceTipCalculator)foodService).getBill()));
         
     }
 

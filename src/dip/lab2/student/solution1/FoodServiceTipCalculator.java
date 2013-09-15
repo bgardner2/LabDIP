@@ -26,6 +26,7 @@ public class FoodServiceTipCalculator implements ITipCalculator {
         this.setBill(billAmt);
     }
 
+    @Override
     public double getTip() {
         double tip = 0.00; // always initialize local variables
 
@@ -51,13 +52,21 @@ public class FoodServiceTipCalculator implements ITipCalculator {
         bill = billAmt;
     }
 
+    @Override
     public final void setServiceRating(ServiceQuality q) {
         // No need to validate because enums provide type safety!
         serviceQuality = q;
     }
+    
+    public final double getBill(){
+        return bill;
+    }
 
+    @Override
     public ServiceQuality getServiceQuality() {
         return serviceQuality;
     }
+    
+    
 
 }

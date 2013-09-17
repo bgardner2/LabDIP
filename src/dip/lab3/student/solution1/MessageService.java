@@ -8,6 +8,7 @@ public class MessageService {
     private Message message = new Message();
     
     public MessageService(IMessageOutput outputType, IMessageInput inputType){
+        //Validate input
         this.outputType = outputType;
         this.inputType = inputType;
     }

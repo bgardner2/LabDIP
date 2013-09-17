@@ -28,7 +28,7 @@ public class Startup {
     
     
     /*TODO:
-     * Create a TipManager service (high level) class
+     * Create a TipCalculatorManager service (high level) class
      * Create a TipCalculator Interface
      * Create an enumeration class
      * Get rid of magic numbers in classes
@@ -46,20 +46,20 @@ public class Startup {
         
         
         
-        TipManager tipManager = new TipManager();
+        TipCalculatorManager tipCalculatorManager = new TipCalculatorManager();
         
         ITipCalculator bagService =
                 new BaggageServiceTipCalculator(
-                ServiceQuality.FAIR,1000);
+                ITipCalculator.ServiceQuality.FAIR,1000);
         ITipCalculator foodService = 
-                new FoodServiceTipCalculator(ServiceQuality.GOOD, 1250);
+                new FoodServiceTipCalculator(ITipCalculator.ServiceQuality.GOOD, 1250);
         
         System.out.println("You had " 
                 + ((BaggageServiceTipCalculator)bagService).getBagCount()
                 + " bags and rated the service as "
                 + ((BaggageServiceTipCalculator)bagService).getServiceQuality()
                 + ". \nThe tip amount is $"
-                + currencyFormatter.format(tipManager.getTipForService(bagService)));
+                + currencyFormatter.format(tipCalculatorManager.getTipForService(bagService)));
         
         System.out.println("");
         
@@ -68,9 +68,9 @@ public class Startup {
                 + " and rated the service as "
                 + ((FoodServiceTipCalculator)foodService).getServiceQuality()
                 + ". \nThe tip amount is $"
-                + currencyFormatter.format(tipManager.getTipForService(foodService))
+                + currencyFormatter.format(tipCalculatorManager.getTipForService(foodService))
                 + ". \nThat is " 
-                + percentFormatter.format(tipManager.getTipForService(foodService)/((FoodServiceTipCalculator)foodService).getBill()));
+                + percentFormatter.format(tipCalculatorManager.getTipForService(foodService)/((FoodServiceTipCalculator)foodService).getBill()));
         
     }
 

@@ -12,6 +12,13 @@ package dip.lab2.student.solution1;
  */
 public class BaggageServiceTipCalculator implements ITipCalculator{
     
+    /*TODO 
+     * Change rates to variables
+     * Change Min bill and Max bill amounts
+     * 1 in getTip should be made a constant (BASE_RATE)
+     * 
+     */
+    
     private final String BAG_COUNT_ERR  = "bag count must be greater than or equal to zero";
     private final String BASE_TIP_ERR = "error: base tip must be greater than or equal to zero";
     
@@ -27,7 +34,7 @@ public class BaggageServiceTipCalculator implements ITipCalculator{
     private double baseTipPerBag;
     private int bagCount;
     
-    private ServiceQuality serviceQuality;
+    private ITipCalculator.ServiceQuality serviceQuality;
 
     public BaggageServiceTipCalculator(ServiceQuality q, int bags) {
         this.setServiceRating(q); // perform validation

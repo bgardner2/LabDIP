@@ -19,7 +19,7 @@ public class FoodServiceTipCalculator implements ITipCalculator {
 
     private double bill;
   
-    private ServiceQuality serviceQuality;
+    private ITipCalculator.ServiceQuality serviceQuality;
 
     public FoodServiceTipCalculator(ServiceQuality q, double billAmt) {
         this.setServiceRating(q);

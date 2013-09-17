@@ -8,6 +8,6 @@ package dip.lab3.student.solution1;
  *
  * @author Ben
  */
-public interface Output {
+public interface IMessageOutput {
     public void showMessage(Message m);
 }

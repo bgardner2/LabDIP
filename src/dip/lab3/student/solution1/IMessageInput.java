@@ -8,8 +8,7 @@ package dip.lab3.student.solution1;
  *
  * @author Ben
  */
-public interface Input {
+public interface IMessageInput {
     public abstract void setMessage(Message m);
-    //public abstract void setMessage(Message m, String message);
-    
+    public abstract boolean validateMessageText(String text);
 }
